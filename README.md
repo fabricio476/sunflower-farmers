@@ -1,34 +1,64 @@
-# Sunflower Farmer
+# Sunflower Farmer - Offline Edition 🌻
 
-A blockchain based game where players can play to earn Sunflower Farmer Tokens.
+Uma versão offline do jogo Sunflower Farmers, sem dependência de blockchain.
 
-You can play the game here: https://www.sunflower-farmers.com/
+![Game Screenshot](https://user-images.githubusercontent.com/11745561/130713259-f87fd1b4-a6f1-4b25-b8b9-4eff6beee9e9.png)
 
-# How does it work?
+## 🎮 Sobre
 
-For more details, please see the guide - https://docs.sunflower-farmers.com/
+Esta é uma versão modificada do Sunflower Farmers que funciona completamente offline, sem necessidade de:
+- Carteira MetaMask
+- Tokens de criptomoeda
+- Conexão com blockchain
 
-# Code Structure
+O jogo salva automaticamente seu progresso no navegador (localStorage).
 
-Smart Contracts can be found in `src/contracts`.
+## 🚀 Como Rodar
 
-Decentralized App (Dapp) can be found in `src/dapp`.
+### Opção 1: Script Local (Recomendado)
+```bash
+./run_local.sh
+```
 
-# How to run?
+### Opção 2: Manual
+```bash
+npm install
+npm start
+```
 
-The dapp is currently pointed at the production blockchain. You can switch to Polygon testnet and it should pick up the chainID automatically.
+O jogo abrirá automaticamente em `http://localhost:3000`
 
-`yarn`
-`yarn start`
+## 🎯 Funcionalidades
 
-<img width="527" alt="Screen Shot 2021-08-25 at 11 52 24 am" src="https://user-images.githubusercontent.com/11745561/130713259-f87fd1b4-a6f1-4b25-b8b9-4eff6beee9e9.png">
+- **1.000.000 moedas iniciais** - para testar todas as funcionalidades
+- **Salva automático** - progresso salvo no navegador
+- **Pan/Arrastar tela** - Shift + clique ou botão do meio do mouse
+- **Upgrade de fazenda** - expanda seus campos de plantio
+- **Crafting** - crie ferramentas e itens
 
-# Licensing 
+## 📁 Estrutura do Código
 
-All code is under MIT licensing. We encourage people to improve the Sunflower Metaverse.
+```
+src/
+  dapp/           # Aplicação React
+    components/   # Componentes do jogo
+    utils/        # Utilitários (localStorage, etc)
+    Blockchain.ts # Mock do blockchain (localStorage)
+```
 
-Please check with the individual designers that you have permissions before using any of the in-game assets sprites. Doing so without permissions is illegal.
+## 🎨 Créditos
 
-We are open source and bootstrapped with zero funds. Hence we have used a base asset pack - https://danieldiggle.itch.io/sunnyside
+O código é licenciado sob MIT. 
 
-You can find the designer and his amazing work here - https://twitter.com/DanielDiggle
+Sprites base: [Sunnyside Asset Pack](https://danieldiggle.itch.io/sunnyside) por [Daniel Diggle](https://twitter.com/DanielDiggle)
+
+> ⚠️ Verifique permissões antes de usar os assets gráficos em outros projetos.
+
+## 📝 Mudanças desta Versão
+
+- ❌ Removida dependência de Web3/Blockchain
+- ❌ Removidos contratos Solidity
+- ✅ Adicionado armazenamento local (localStorage)
+- ✅ Adicionado pan/arrastar da tela
+- ✅ Corrigidos bugs de upgrade
+- ✅ Melhorada a experiência de desenvolvimento local
