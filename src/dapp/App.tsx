@@ -10,19 +10,13 @@ import {
   BlockchainState,
 } from "./machine";
 
-import { Donation } from "./types/contract";
-
 import {
-  Charity,
   Connecting,
   Welcome,
-  Creating,
   Saving,
   Error,
   TimerComplete,
   Unsupported,
-  SaveError,
-  GasWarning,
 } from "./components/modals";
 
 import Farm from "./components/farm/Farm";
@@ -37,27 +31,8 @@ export const App: React.FC = () => {
     BlockchainState
   >(service);
 
-  React.useEffect(() => {
-    if (window.ethereum) {
-      window.ethereum.on("networkChanged", () => {
-        console.log("Network changed");
-        send("NETWORK_CHANGED");
-      });
-
-      window.ethereum.on("accountsChanged", function (accounts) {
-        send("ACCOUNT_CHANGED");
-      });
-    }
-  }, [send]);
-
   const getStarted = () => {
     send("GET_STARTED");
-  };
-
-  const createFarm = (donation: Donation) => {
-    send("DONATE", {
-      donation: { charity: donation.charity, value: donation.value },
-    });
   };
 
   return (
@@ -77,20 +52,10 @@ export const App: React.FC = () => {
           <Welcome onGetStarted={getStarted} />
         </Modal>
 
-        <Modal centered show={machineState.matches("registering")}>
-          <Charity onSelect={createFarm} />
-        </Modal>
-
-        <Modal centered show={machineState.matches("creating")}>
-          <Creating />
-        </Modal>
-
         <Modal
           centered
           show={
-            machineState.matches("confirming") ||
-            machineState.matches("upgrading") ||
-            machineState.matches("rewarding") ||
+            machineState.matches("saving") ||
             machineState.matches("collecting")
           }
         >
@@ -101,28 +66,8 @@ export const App: React.FC = () => {
           <Crafting />
         </Modal>
 
-        <Modal centered show={machineState.matches("timerComplete")}>
-          <TimerComplete />
-        </Modal>
-
         <Modal centered show={machineState.matches("failure")}>
           <Error code={machineState.context.errorCode} />
-        </Modal>
-
-        <Modal centered show={machineState.matches("warning")}>
-          <GasWarning
-            gasPrice={machineState.context.gasPrice}
-            supply={machineState.context.blockChain.totalSupply()}
-            action={
-              machineState.context.blockChain.isUnsaved()
-                ? "SYNC"
-                : "UPGRADE"
-            }
-          />
-        </Modal>
-
-        <Modal centered show={machineState.matches("saveFailure")}>
-          <SaveError code={machineState.context.errorCode} />
         </Modal>
       </div>
       <Banner />

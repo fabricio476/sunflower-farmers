@@ -100,7 +100,7 @@ export const Trees: React.FC<Props> = ({ inventory }) => {
       load();
       setAmount(0);
     }
-  }, [machineState.value]);
+  }, [machineState]);
 
   useEffect(() => {
     const change = machineState.context.blockChain.getInventoryChange();
@@ -108,9 +108,10 @@ export const Trees: React.FC<Props> = ({ inventory }) => {
     if (change.Wood > 0) {
       setChoppedCount(change.Wood);
       setShowChoppedCount(true);
+      setShowChoppedCount(true);
       setTimeout(() => setShowChoppedCount(false), 3000);
     }
-  }, [machineState.value, inventory]);
+  }, [machineState, inventory]);
 
   const chop = () => {
     send("CHOP", {
@@ -164,17 +165,17 @@ export const Trees: React.FC<Props> = ({ inventory }) => {
             <img src={tree} className="tree" alt="tree" />
             {isHighlighted && machineState.matches("chopping") && (
               <>
-                <img src={chopping} className="wood-chopper" />
+                <img src={chopping} className="wood-chopper" alt="Chopping" />
                 <div className="gathered-resource-feedback">
                   <span>+</span>
-                  <img src={wood} className="wood-chopped" />
+                  <img src={wood} className="wood-chopped" alt="Wood" />
                 </div>
               </>
             )}
             {showWaiting && (
               <div>
-                <img src={waiting} className="wood-chopper" />
-                <img src={questionMark} className="chopper-question" />
+                <img src={waiting} className="wood-chopper" alt="Waiting" />
+                <img src={questionMark} className="chopper-question" alt="Question" />
               </div>
             )}
           </div>
@@ -195,36 +196,37 @@ export const Trees: React.FC<Props> = ({ inventory }) => {
                 src={closeIcon}
                 className="gather-close-icon"
                 onClick={close}
+                alt="Close"
               />
 
               <div className="resource-materials">
                 <div>
                   <div className="resource-material">
                     <span>Requires</span>
-                    <img src={axe} />
+                    <img src={axe} alt="Axe" />
                   </div>
                   <div className="resource-material">
                     <span>Chops</span>
                     <div>
                       <span>3-5</span>
-                      <img src={wood} />
+                      <img src={wood} alt="Wood" />
                     </div>
                   </div>
                   <div className="resource-material">
                     <span>Regrows every hour</span>
                     <div>
-                      <img id="resource-timer" src={timer} />
+                      <img id="resource-timer" src={timer} alt="Timer" />
                     </div>
                   </div>
                 </div>
                 {inventory.Axe < amount ? (
                   <Message>
-                    You need a <img src={axe} className="required-tool" />
+                    You need a <img src={axe} className="required-tool" alt="Axe" />
                   </Message>
                 ) : (
                   <div className="gather-resources">
                     <div id="craft-count">
-                      <img className="gather-axe" src={axe} />
+                      <img className="gather-axe" src={axe} alt="Axe" />
                       <Message>{amount}</Message>
                       <div id="arrow-container">
                         {amount < limit ? (
@@ -257,13 +259,14 @@ export const Trees: React.FC<Props> = ({ inventory }) => {
               </div>
               <div className="resource-details">
                 <span className="resource-title">Tree</span>
-                <img src={tree} className="resource-image" />
+                <img src={tree} className="resource-image" alt="Tree" />
                 <span className="resource-description">
                   A bountiful resource that can be chopped for wood.
                 </span>
                 <a
                   href="https://docs.sunflower-farmers.com/resources"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <h3 className="current-price-supply-demand">Read more</h3>
                 </a>
@@ -281,7 +284,7 @@ export const Trees: React.FC<Props> = ({ inventory }) => {
         <Panel>
           <div className="wood-toast-body">
             +{choppedCount}
-            <img className="gather-axe" src={wood} />
+            <img className="gather-axe" src={wood} alt="Wood" />
           </div>
         </Panel>
       </div>

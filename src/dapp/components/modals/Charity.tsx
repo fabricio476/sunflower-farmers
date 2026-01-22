@@ -102,7 +102,7 @@ export const Charity: React.FC<Props> = ({ onSelect }) => {
           </div>
         </div>
 
-        <span id="donate-minimum-description">Minimum of $0.1 MATIC </span>
+        <span id="donate-minimum-description">Minimum of 0.1 Coins </span>
         <div id="charities">
           {/* <div>
             <div className="charity">Cool Earth</div>

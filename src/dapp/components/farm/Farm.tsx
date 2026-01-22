@@ -53,9 +53,7 @@ export const Farm: React.FC = () => {
   const [totalItemSupplies, setTotalItemSupplies] =
     React.useState<Inventory>(DEFAULT_INVENTORY);
 
-  const [supply, setSupply] = React.useState<Supply>({
-    statue: 0,
-  });
+
 
   const farmIsFresh = React.useRef(false);
   const accountId = React.useRef<string>();

@@ -48,7 +48,7 @@ export const Reward: React.FC<Props> = ({ account }) => {
 
             setIsCollected(false)
         }
-    }, [account])
+    }, [account, machineState])
 
     if (!reward || isCollected) {
         return null
@@ -57,10 +57,10 @@ export const Reward: React.FC<Props> = ({ account }) => {
     return (
         <>
 
-            <RewardModal reward={reward} onReceive={onReceiveConfirm} onClose={() => setShowModal(false)} isOpen={showModal}/>
+            <RewardModal reward={reward} onReceive={onReceiveConfirm} onClose={() => setShowModal(false)} isOpen={showModal} />
 
             {/* Present */}
-            <div style={{ gridColumn: '12/13', gridRow: '9/10'}}>
+            <div style={{ gridColumn: '12/13', gridRow: '9/10' }}>
                 <img id='present' src={present} onClick={onUpgrade} />
             </div>
         </>

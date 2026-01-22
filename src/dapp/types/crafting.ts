@@ -1,22 +1,4 @@
-import Token from "../../abis/Token.json";
-import Farm from "../../abis/Farm.json";
-import Axe from "../../abis/Axe.json";
-import Wood from "../../abis/Wood.json";
-import Pickaxe from "../../abis/Pickaxe.json";
-import StonePickaxe from "../../abis/StonePickaxe.json";
-import IronPickaxe from "../../abis/IronPickaxe.json";
-import Stone from "../../abis/Stone.json";
-import Gold from "../../abis/Gold.json";
-import Egg from "../../abis/Egg.json";
-import Chicken from "../../abis/Chicken.json";
-import Iron from "../../abis/Iron.json";
-import Statue from "../../abis/Statue.json";
-import ChristmasTree from "../../abis/ChristmasTree.json";
-import Scarecrow from "../../abis/Scarecrow.json";
-import PotatoStatue from "../../abis/PotatoStatue.json";
-import FarmCat from "../../abis/FarmCat.json";
-import FarmDog from "../../abis/FarmDog.json";
-import Gnome from "../../abis/Gnome.json";
+// Blockchain ABIs removed for client-side version
 
 import pickaxe from "../images/ui/pickaxe.png";
 import woodPickaxe from "../images/ui/wood_pickaxe.png";
@@ -47,14 +29,14 @@ import flour from "../images/wheat/flour.png";
 
 export interface Ingredient {
   name:
-    | "Wood"
-    | "Stone"
-    | "$SFF"
-    | "Iron"
-    | "Gold"
-    | "Egg"
-    | "Wheat"
-    | "MATIC";
+  | "Wood"
+  | "Stone"
+  | "Coins"
+  | "Iron"
+  | "Gold"
+  | "Egg"
+  | "Wheat"
+  | "Wheat";
   image: any;
   amount: number;
 }
@@ -65,30 +47,30 @@ export interface Recipe extends Item {
 
 export interface Item {
   name:
-    | "Axe"
-    | "Wood pickaxe"
-    | "Stone Pickaxe"
-    | "Iron Pickaxe"
-    | "Fishing rod"
-    | "Hammer"
-    | "Stone"
-    | "Wood"
-    | "Iron"
-    | "Gold"
-    | "Egg"
-    | "Chicken"
-    | "Sword"
-    | "Chicken coop"
-    | "Sunflower Statue"
-    | "OG Potato Statue"
-    | "Christmas Tree"
-    | "Golden Egg"
-    | "Scarecrow"
-    | "Farm Cat"
-    | "Farm Dog"
-    | "Gnome"
-    | "Wheat Seed"
-    | "Flour";
+  | "Axe"
+  | "Wood pickaxe"
+  | "Stone Pickaxe"
+  | "Iron Pickaxe"
+  | "Fishing rod"
+  | "Hammer"
+  | "Stone"
+  | "Wood"
+  | "Iron"
+  | "Gold"
+  | "Egg"
+  | "Chicken"
+  | "Sword"
+  | "Chicken coop"
+  | "Sunflower Statue"
+  | "OG Potato Statue"
+  | "Christmas Tree"
+  | "Golden Egg"
+  | "Scarecrow"
+  | "Farm Cat"
+  | "Farm Dog"
+  | "Gnome"
+  | "Wheat Seed"
+  | "Flour";
   description: string;
   address: string;
   image: any;
@@ -115,12 +97,11 @@ export const recipes: Recipe[] = [
     address: "0xc65C99E4c3AAb25322d4E808e5e96Ec774330696",
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 1,
         image: coin,
       },
     ],
-    abi: Axe,
   },
   {
     name: "Wood pickaxe",
@@ -135,16 +116,14 @@ export const recipes: Recipe[] = [
         image: wood,
       },
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 2,
         image: coin,
       },
     ],
-    abi: Pickaxe,
   },
   {
     name: "Stone Pickaxe",
-    abi: StonePickaxe,
     description: "Used for mining and collecting iron ore",
     image: pickaxe,
     type: "ERC20",
@@ -161,7 +140,7 @@ export const recipes: Recipe[] = [
         image: stone,
       },
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 2,
         image: coin,
       },
@@ -169,7 +148,6 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Iron Pickaxe",
-    abi: IronPickaxe,
     description: "Used for mining and collecting gold",
     image: ironPickaxe,
     type: "ERC20",
@@ -186,7 +164,7 @@ export const recipes: Recipe[] = [
         image: iron,
       },
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 10,
         image: coin,
       },
@@ -207,7 +185,7 @@ export const recipes: Recipe[] = [
         image: wood,
       },
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 10,
         image: coin,
       },
@@ -227,7 +205,7 @@ export const recipes: Recipe[] = [
         image: wood,
       },
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 10,
         image: coin,
       },
@@ -247,7 +225,7 @@ export const recipes: Recipe[] = [
         image: wood,
       },
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 10,
         image: coin,
       },
@@ -255,14 +233,13 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Sunflower Statue",
-    abi: Statue,
     description: "A symbol of the holy token",
     image: statue,
     type: "NFT",
     address: "0x71556745dA70F2103C50f0E577C1ACF8A9aAC05E",
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 50,
         image: coin,
       },
@@ -282,14 +259,13 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Scarecrow",
-    abi: Scarecrow,
     description: "Grow wheat (coming soon) 3x faster.",
     image: scarecrow,
     type: "NFT",
     address: "0x143Ba32499065b5F89c518d5B75a38F3529cE324",
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 10,
         image: coin,
       },
@@ -305,7 +281,6 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Christmas Tree",
-    abi: ChristmasTree,
     description: "A christmas tree for the holidays",
     image: christmasTree,
     type: "NFT",
@@ -314,7 +289,7 @@ export const recipes: Recipe[] = [
       "https://opensea.io/collection/sunflower-farmers-christmas-tree",
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 300,
         image: coin,
       },
@@ -328,14 +303,13 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Chicken coop",
-    abi: ChristmasTree,
     description: "Produce eggs 3x as fast with this stylish coop",
     image: chickenCoop,
     type: "NFT",
     address: "0x3D422610242E66aB04069349DF9e189B90A42449",
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 200,
         image: coin,
       },
@@ -356,14 +330,13 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Chicken",
-    abi: Chicken,
     description: "An animal used to produce eggs",
     image: chicken,
     type: "ERC20",
     address: "0xf0F1Cc9192ca0064EB3D35e0DE1CE5e56572ecab",
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 10,
         image: coin,
       },
@@ -371,7 +344,6 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Golden Egg",
-    abi: Chicken,
     description: "Will the golden egg bring you happiness?",
     image: goldEgg,
     type: "NFT",
@@ -395,7 +367,6 @@ export const recipes: Recipe[] = [
   },
   {
     name: "OG Potato Statue",
-    abi: PotatoStatue,
     description: "Flex your status as an original potato hustler",
     image: potatoStatue,
     type: "NFT",
@@ -413,7 +384,6 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Farm Cat",
-    abi: FarmCat,
     description: "A cat named Victoria that helps keep rats away.",
     image: farmCat,
     type: "NFT",
@@ -431,14 +401,13 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Farm Dog",
-    abi: FarmDog,
     description: "Herd sheep 4x faster with Chonker the Dog.",
     image: dog,
     type: "NFT",
     address: "0x457ea0b03dD671baC515FA5bf324918Db4B12669",
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 30,
         image: coin,
       },
@@ -453,14 +422,13 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Gnome",
-    abi: Gnome,
     description: "Influence the weather with this magic gnome",
     image: gnome,
     type: "NFT",
     address: "0x35bE1387D1bBC2d263b73ab2825eE91f1fd75CF3",
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 5,
         image: coin,
       },
@@ -480,7 +448,7 @@ export const recipes: Recipe[] = [
     isLocked: true,
     ingredients: [
       {
-        name: "$SFF",
+        name: "Coins",
         amount: 0.1,
         image: coin,
       },
@@ -507,7 +475,6 @@ export const items: Item[] = [
   ...recipes,
   {
     name: "Stone",
-    abi: Stone,
     description: "A natural resource in Sunflower Land used for crafting",
     image: stone,
     type: "ERC20",
@@ -515,7 +482,6 @@ export const items: Item[] = [
   },
   {
     name: "Wood",
-    abi: Wood,
     description:
       "A bountiful resource in Sunflower Land used for crafting",
     image: wood,
@@ -525,7 +491,6 @@ export const items: Item[] = [
 
   {
     name: "Iron",
-    abi: Iron,
     description:
       "A bountiful resource in Sunflower Land used for crafting",
     image: iron,
@@ -534,7 +499,6 @@ export const items: Item[] = [
   },
   {
     name: "Gold",
-    abi: Gold,
     description: "A scarce resource in Sunflower Land used for crafting",
     image: goldOre,
     type: "ERC20",
@@ -542,7 +506,6 @@ export const items: Item[] = [
   },
   {
     name: "Egg",
-    abi: Egg,
     description:
       "A bountiful resource in Sunflower Land used for crafting",
     image: egg,

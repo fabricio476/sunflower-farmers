@@ -41,33 +41,32 @@ export const Box: React.FC<BoxProps> = ({
     <div className={`box-panel`} onClick={onClick}>
       {
         <div
-          className={`box-pixel-panel ${isSelected && "box-active"} ${
-            disabled && "box-disabled"
-          }`}
+          className={`box-pixel-panel ${isSelected && "box-active"} ${disabled && "box-disabled"
+            }`}
         >
           {count && <span className={`box-count`}>{count}</span>}
           {children}
-          {image && <img src={image} className="box-item" />}
-          {isSelected && <img className="select-box" src={selectBox} />}
-          <img id="panel-left-edge" src={leftEdgeInner} />
-          <img id="panel-right-edge" src={rightEdgeInner} />
-          <img id="panel-bottom-edge" src={bottomEdgeInner} />
-          <img id="panel-top-edge" src={topEdgeInner} />
-          <img id="panel-top-left" src={topLeftInner} />
-          <img id="panel-bottom-left" src={bottomLeftInner} />
-          <img id="panel-bottom-right" src={bottomRightInner} />
-          <img id="panel-top-right" src={topRightInner} />
+          {image && <img src={image} className="box-item" alt="" />}
+          {isSelected && <img className="select-box" src={selectBox} alt="" />}
+          <img id="panel-left-edge" src={leftEdgeInner} alt="" />
+          <img id="panel-right-edge" src={rightEdgeInner} alt="" />
+          <img id="panel-bottom-edge" src={bottomEdgeInner} alt="" />
+          <img id="panel-top-edge" src={topEdgeInner} alt="" />
+          <img id="panel-top-left" src={topLeftInner} alt="" />
+          <img id="panel-bottom-left" src={bottomLeftInner} alt="" />
+          <img id="panel-bottom-right" src={bottomRightInner} alt="" />
+          <img id="panel-top-right" src={topRightInner} alt="" />
         </div>
       }
 
-      <img id="panel-left-edge" src={leftEdge} />
-      <img id="panel-right-edge" src={rightEdge} />
-      <img id="panel-bottom-edge" src={bottomEdge} />
-      <img id="panel-top-edge" src={topEdge} />
-      <img id="panel-top-left" src={topLeft} />
-      <img id="panel-bottom-left" src={bottomLeft} />
-      <img id="panel-bottom-right" src={bottomRight} />
-      <img id="panel-top-right" src={topRight} />
+      <img id="panel-left-edge" src={leftEdge} alt="" />
+      <img id="panel-right-edge" src={rightEdge} alt="" />
+      <img id="panel-bottom-edge" src={bottomEdge} alt="" />
+      <img id="panel-top-edge" src={topEdge} alt="" />
+      <img id="panel-top-left" src={topLeft} alt="" />
+      <img id="panel-bottom-left" src={bottomLeft} alt="" />
+      <img id="panel-bottom-right" src={bottomRight} alt="" />
+      <img id="panel-top-right" src={topRight} alt="" />
     </div>
   );
 };

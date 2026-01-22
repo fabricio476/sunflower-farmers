@@ -73,7 +73,7 @@ export const FruitBoard: React.FC<Props> = ({
           onClick={!isLocked ? () => selectFruit(fruit) : undefined}
         >
           <div className="image">
-            <img src={fruit.image} />
+            <img src={fruit.image} alt={fruit.name} />
           </div>
         </div>
         <div className="fruit-details">
@@ -81,24 +81,24 @@ export const FruitBoard: React.FC<Props> = ({
             <span className="title">{fruit.name}</span>
 
             <div className="fruit-time">
-              <img src={stopwatch} />
+              <img src={stopwatch} alt="Stopwatch" />
               <span>{secondsToString(fruit.harvestMinutes * 60)}</span>
             </div>
           </div>
           <div className="fruit-breakdown">
             <div className="price">
               <span className="price-label">Plant</span>
-              <img src={coin} />
+              <img src={coin} alt="Coin" />
               <span>{buyPrice}</span>
             </div>
             <div className="fruit-arrows">
-              <img src={arrow} />
-              <img src={arrow} />
-              <img src={arrow} />
+              <img src={arrow} alt="Arrow" />
+              <img src={arrow} alt="Arrow" />
+              <img src={arrow} alt="Arrow" />
             </div>
             <div className="price">
               <span className="price-label">Harvest</span>
-              <img src={coin} />
+              <img src={coin} alt="Coin" />
               <span>{sellPrice}</span>
             </div>
           </div>
@@ -111,7 +111,7 @@ export const FruitBoard: React.FC<Props> = ({
         <div className="upgrade-required">
           <Message>
             Upgrade Required
-            <img src={alert} className="insufficient-funds-alert" />
+            <img src={alert} className="insufficient-funds-alert" alt="Alert" />
           </Message>
         </div>
       );
@@ -120,7 +120,7 @@ export const FruitBoard: React.FC<Props> = ({
         <div className="upgrade-required">
           <Message>
             Insufficient funds
-            <img src={cancel} className="insufficient-funds-cross" />
+            <img src={cancel} className="insufficient-funds-cross" alt="Cancel" />
           </Message>
         </div>
       );
@@ -130,8 +130,8 @@ export const FruitBoard: React.FC<Props> = ({
   return (
     <>
       <div id="basket" onClick={() => setShowModal(true)}>
-        <img className="basket-fruit" src={disc} />
-        <img className="selected-fruit" src={selectedItem.image} />
+        <img className="basket-fruit" src={disc} alt="Disc" />
+        <img className="selected-fruit" src={selectedItem.image} alt="Selected Fruit" />
         <Message>Change</Message>
       </div>
       <Modal

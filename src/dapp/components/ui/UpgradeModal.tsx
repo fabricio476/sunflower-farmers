@@ -10,8 +10,6 @@ import {
   BlockchainState,
 } from "../../machine";
 
-import sunflower from "../../images/sunflower/fruit.png";
-import potato from "../../images/potato/fruit.png";
 import pumpkin from "../../images/pumpkin/fruit.png";
 import beetroot from "../../images/beetroot/fruit.png";
 import cauliflower from "../../images/cauliflower/fruit.png";
@@ -60,11 +58,11 @@ export const UpgradeModal: React.FC<Props> = ({
   }, [isOpen]);
 
   const onUpgrade = () => {
-    send("SAVE", { action: "UPGRADE" });
+    send("UPGRADE");
     onClose();
   };
 
-  const marketRate = getMarketRate(totalSupply);
+
 
   const isUnsaved = machineState.context.blockChain.isUnsaved();
 
@@ -84,7 +82,7 @@ export const UpgradeModal: React.FC<Props> = ({
               <div className="upgrade-required">
                 <Message>
                   Save your farm first
-                  <img src={cancel} className="insufficient-funds-cross" />
+                  <img src={cancel} className="insufficient-funds-cross" alt="Cancel" />
                 </Message>
               </div>
               <span id="donate-description">
@@ -107,11 +105,11 @@ export const UpgradeModal: React.FC<Props> = ({
                 </span>
                 <div className="upgrade-icons">
                   <span className="charity-description">Unlock:</span>
-                  <img src={pumpkin} className="upgrade-fruit" />
-                  <img src={beetroot} className="upgrade-fruit" />
+                  <img src={pumpkin} className="upgrade-fruit" alt="Pumpkin" />
+                  <img src={beetroot} className="upgrade-fruit" alt="Beetroot" />
                 </div>
                 <div className="charity-buttons">
-                  <span>{`${levelOnePrice} $SFF`}</span>
+                  <span>{`${levelOnePrice} Coins`}</span>
                   <Button
                     disabled={isUnsaved || balance < levelOnePrice}
                     onClick={onUpgrade}
@@ -133,10 +131,10 @@ export const UpgradeModal: React.FC<Props> = ({
                 </span>
                 <div className="upgrade-icons">
                   <span className="charity-description">Unlock:</span>
-                  <img src={cauliflower} className="upgrade-fruit" />
+                  <img src={cauliflower} className="upgrade-fruit" alt="Cauliflower" />
                 </div>
                 <div className="charity-buttons">
-                  <span>{`${levelTwoPrice} $SFF`}</span>
+                  <span>{`${levelTwoPrice} Coins`}</span>
                   <Button
                     disabled={
                       isUnsaved || farmSize < 8 || balance < levelTwoPrice
@@ -161,10 +159,10 @@ export const UpgradeModal: React.FC<Props> = ({
                 </span>
                 <div className="upgrade-icons">
                   <span className="charity-description">Unlock:</span>
-                  <img src={parsnip} className="upgrade-fruit" />
+                  <img src={parsnip} className="upgrade-fruit" alt="Parsnip" />
                 </div>
                 <div className="charity-buttons">
-                  <span>{`${levelThreePrice} $SFF`}</span>
+                  <span>{`${levelThreePrice} Coins`}</span>
                   <Button
                     disabled={
                       isUnsaved ||
@@ -191,10 +189,10 @@ export const UpgradeModal: React.FC<Props> = ({
                 </span>
                 <div className="upgrade-icons">
                   <span className="charity-description">Unlock:</span>
-                  <img src={radish} className="upgrade-fruit" />
+                  <img src={radish} className="upgrade-fruit" alt="Radish" />
                 </div>
                 <div className="charity-buttons">
-                  <span>{`${levelFourPrice} $SFF`}</span>
+                  <span>{`${levelFourPrice} Coins`}</span>
                   <Button
                     disabled={
                       isUnsaved ||

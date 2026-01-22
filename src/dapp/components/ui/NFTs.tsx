@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Panel } from "../ui/Panel";
+
 import { Button } from "../ui/Button";
 import { Message } from "../ui/Message";
 import { InventoryItems } from "../ui/InventoryItems";
@@ -12,11 +12,11 @@ import {
   service,
 } from "../../machine";
 
-import hammer from "../../images/ui/hammer.png";
+
 import basket from "../../images/ui/basket.png";
 import building from "../../images/buildings/side-house-2.png";
 
-import { recipes, Recipe, Inventory, Item } from "../../types/crafting";
+import { recipes, Recipe, Inventory } from "../../types/crafting";
 import { Box, BoxProps } from "./Box";
 
 import "./Crafting.css";
@@ -43,7 +43,7 @@ export const NFTs: React.FC<Props> = ({
 }) => {
   const [amount, setAmount] = React.useState(1);
   const [selectedRecipe, setSelectedRecipe] = React.useState(NFT_ITEMS[0]);
-  const [machineState, send] = useService<
+  const [machineState] = useService<
     Context,
     BlockchainEvent,
     BlockchainState
@@ -82,7 +82,7 @@ export const NFTs: React.FC<Props> = ({
 
   const ingredientList = selectedRecipe.ingredients.map((ingredient) => {
     const inventoryCount =
-      ingredient.name === "$SFF" ? balance : inventory[ingredient.name];
+      ingredient.name === "Coins" ? balance : inventory[ingredient.name];
     const price = ingredient.amount * amount;
     return {
       name: ingredient.name,
@@ -93,8 +93,6 @@ export const NFTs: React.FC<Props> = ({
   });
 
   const Action = () => {
-    return <span id="recipe-description">Locked</span>;
-
     if (isUnsaved) {
       return (
         <div className="upgrade-required">
@@ -103,6 +101,7 @@ export const NFTs: React.FC<Props> = ({
             <img
               //src={cancel}
               className="insufficient-funds-cross"
+              alt=""
             />
           </Message>
         </div>
@@ -151,7 +150,7 @@ export const NFTs: React.FC<Props> = ({
           ))}
         </div>
         <div id="inventory-header">
-          <img src={basket} />
+          <img src={basket} alt="" />
           <span>Inventory</span>
         </div>
         <div id="inventory">
@@ -160,6 +159,7 @@ export const NFTs: React.FC<Props> = ({
         <a
           href="https://docs.sunflower-farmers.com/crafting-guide"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <h3 className="current-price-supply-demand">Read more</h3>
         </a>
@@ -170,7 +170,7 @@ export const NFTs: React.FC<Props> = ({
         )}
         <span id="recipe-title">{selectedRecipe.name}</span>
         <div id="crafting-item">
-          <img src={selectedRecipe.image} />
+          <img src={selectedRecipe.image} alt="" />
         </div>
         <span id="recipe-description">{selectedRecipe.description}</span>
 
@@ -178,13 +178,12 @@ export const NFTs: React.FC<Props> = ({
           {ingredientList.map((ingredient) => (
             <div className="ingredient">
               <div>
-                <img className="ingredient-image" src={ingredient.image} />
+                <img className="ingredient-image" src={ingredient.image} alt="" />
                 <span className="ingredient-count">{ingredient.name}</span>
               </div>
               <span
-                className={`ingredient-text ${
-                  !ingredient.canAfford && "ingredient-insufficient"
-                }`}
+                className={`ingredient-text ${!ingredient.canAfford && "ingredient-insufficient"
+                  }`}
               >
                 {ingredient.price}
               </span>
@@ -194,14 +193,13 @@ export const NFTs: React.FC<Props> = ({
         {selectedRecipe.farmLevel && (
           <div className="ingredient">
             <div>
-              <img className="ingredient-image" src={building} />
+              <img className="ingredient-image" src={building} alt="" />
               <span className="ingredient-count">Farm level</span>
             </div>
             <span
-              className={`ingredient-text ${
-                level < selectedRecipe.farmLevel &&
+              className={`ingredient-text ${level < selectedRecipe.farmLevel &&
                 "ingredient-insufficient"
-              }`}
+                }`}
             >
               {selectedRecipe.farmLevel}
             </span>
@@ -212,6 +210,7 @@ export const NFTs: React.FC<Props> = ({
           <span id="recipe-description">
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href={selectedRecipe.openSeaLink}
               style={{ color: "white", textDecoration: "underline" }}
             >

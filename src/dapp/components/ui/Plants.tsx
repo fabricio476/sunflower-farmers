@@ -53,6 +53,7 @@ export const Plants: React.FC<Props> = ({
         <a
           href="https://docs.sunflower-farmers.com/plant-guide"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <h3 className="current-price-supply-demand">Read more</h3>
         </a>
@@ -84,13 +85,13 @@ export const Plants: React.FC<Props> = ({
                 <div>
                   <span className="ingredient-count">Plant</span>
                 </div>
-                <span className="ingredient-text">{`${plant.buyPrice} $SFF`}</span>
+                <span className="ingredient-text">{`${plant.buyPrice} Coins`}</span>
               </div>
               <div className="ingredient">
                 <div>
                   <span className="ingredient-count">Harvest</span>
                 </div>
-                <span className="ingredient-text">{`${plant.sellPrice} $SFF `}</span>
+                <span className="ingredient-text">{`${plant.sellPrice} Coins `}</span>
               </div>
             </div>
           </>

@@ -72,7 +72,7 @@ export const RewardModal: React.FC<Props> = ({
                 <img src={coin} id="reward-coin" />
               </div>
               <div id="reward-holder">
-                <span>{`${reward.toFixed(2)} $SFF`}</span>
+                <span>{`${reward.toFixed(2)} Coins`}</span>
               </div>
               <div id="reward-button">
                 <Button onClick={onReceive}>Collect</Button>

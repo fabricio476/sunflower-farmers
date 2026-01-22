@@ -12,7 +12,6 @@ import {
   service,
 } from "../../machine";
 
-import matic from "../../images/ui/matic.png";
 import icon from "../../images/ui/icon.png";
 import carry from "../../images/characters/goblin_carry.gif";
 
@@ -21,7 +20,6 @@ import { Box, BoxProps } from "./Box";
 
 import "./Crafting.css";
 import { useService } from "@xstate/react";
-import { COMMUNITY_CRAFTING_ADDRESS } from "../../Blockchain";
 
 interface Props {
   onClose: () => void;
@@ -48,13 +46,12 @@ export const CommunityApproval: React.FC<Props> = ({
   const sunflowerTokenAmount = recipe.ingredients[0].amount;
 
   const sunflowerTokens = recipe.ingredients[0].amount;
-  const maticPrice = sunflowerTokens * quickSwapRate;
+
 
   const craft = () => {
     service.send("CRAFT", {
       recipe,
       amount: 1,
-      eth: maticPrice,
     });
     onClose();
   };
@@ -64,10 +61,7 @@ export const CommunityApproval: React.FC<Props> = ({
     setError("");
 
     try {
-      await machineState.context.blockChain.approve(
-        COMMUNITY_CRAFTING_ADDRESS,
-        sunflowerTokenAmount
-      );
+      await machineState.context.blockChain.approve();
       setIsApproved(true);
     } catch (e) {
       setError(`Unable to approve`);
@@ -83,13 +77,13 @@ export const CommunityApproval: React.FC<Props> = ({
           Crafting this item will burn your tokens into the liquidity pool.
         </span>
         <span className="community-guide-text">
-          Please note that prices change frequently and the $SFF amount may
+          Please note that prices change frequently and the Coins amount may
           have a slippage. By crafting you accept these conditions.
         </span>
         {!isApproved && (
           <div>
             <span className="community-guide-text">
-              Step 1 - Approve $SFF
+              Step 1 - Approve Coins
             </span>
             {!isApproving && <Button onClick={approve}>Approve</Button>}
             {isApproving && (
@@ -125,21 +119,13 @@ export const CommunityApproval: React.FC<Props> = ({
           <div className="ingredient">
             <div>
               <img className="ingredient-image" src={icon} />
-              <span className="ingredient-count">$SFF</span>
+              <span className="ingredient-count">Coins</span>
             </div>
             <span className={`ingredient-text`}>
               {sunflowerTokenAmount}
             </span>
           </div>
-          <div className="ingredient">
-            <div>
-              <img className="ingredient-image" src={matic} />
-              <span className="ingredient-count">$MATIC</span>
-            </div>
-            <span className={`ingredient-text`}>
-              {maticPrice.toFixed(2)}
-            </span>
-          </div>
+          {/* MATIC Removal */}
         </div>
       </div>
     </div>

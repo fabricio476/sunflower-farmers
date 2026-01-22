@@ -6,6 +6,12 @@
   overflow-x: hidden;
 }
 
+.land-container {
+  position: relative;
+  user-select: none;
+  cursor: grab;
+}
+
 .item-a {
   grid-area: header;
 }

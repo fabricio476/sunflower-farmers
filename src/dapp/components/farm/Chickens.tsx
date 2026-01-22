@@ -114,6 +114,7 @@ export const Chickens: React.FC<Props> = ({ inventory }) => {
               <img
                 src={closeIcon}
                 className="gather-close-icon"
+                alt="Close"
                 onClick={() => setShowModal(false)}
               />
 
@@ -121,7 +122,7 @@ export const Chickens: React.FC<Props> = ({ inventory }) => {
                 <span className="resource-title">
                   Collect Chicken Eggs
                 </span>
-                <img src={egg} className="resource-image" />
+                <img src={egg} className="resource-image" alt="Egg" />
                 <span
                   className="resource-description"
                   style={{ marginBottom: "1rem" }}
@@ -133,7 +134,7 @@ export const Chickens: React.FC<Props> = ({ inventory }) => {
                 {!inventory["Chicken"] ? (
                   <Message>
                     You need a{" "}
-                    <img src={chicken} className="required-tool" />
+                    <img src={chicken} className="required-tool" alt="Chicken" />
                   </Message>
                 ) : timeTillHatch ? (
                   <Message>Eggs will be ready in {timeTillHatch}</Message>
@@ -153,6 +154,7 @@ export const Chickens: React.FC<Props> = ({ inventory }) => {
                 <a
                   href="https://docs.sunflower-farmers.com/resources"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <h3 className="current-price-supply-demand">
                     Read more

@@ -19,6 +19,8 @@ interface Props {
   land: any[];
   fruits: FruitItem[];
   inventory: InventorySupply;
+  selectedItem: ActionableItem;
+  onSelectItem: (item: ActionableItem) => void;
 }
 
 export const Inventory: React.FC<Props> = ({
@@ -26,9 +28,9 @@ export const Inventory: React.FC<Props> = ({
   land,
   fruits,
   inventory,
+  selectedItem,
+  onSelectItem,
 }) => {
-  const [selectedItem, onSelectItem] = React.useState<ActionableItem>(items[0]);
-
   const item = selectedItem as Item;
 
   return (
@@ -42,6 +44,7 @@ export const Inventory: React.FC<Props> = ({
         <a
           href="https://docs.sunflower-farmers.com/crafting-guide"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <h3 className="current-price-supply-demand">Read more</h3>
         </a>

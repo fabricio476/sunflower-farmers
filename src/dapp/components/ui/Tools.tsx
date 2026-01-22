@@ -11,13 +11,13 @@ import {
   service,
 } from "../../machine";
 
-import hammer from "../../images/ui/hammer.png";
+
 import basket from "../../images/ui/basket.png";
 
 import arrowUp from "../../images/ui/arrow_up.png";
 import arrowDown from "../../images/ui/arrow_down.png";
 
-import { recipes, Recipe, Inventory, Item } from "../../types/crafting";
+import { recipes, Recipe, Inventory } from "../../types/crafting";
 import { Box, BoxProps } from "./Box";
 
 import "./Crafting.css";
@@ -44,7 +44,7 @@ export const Tools: React.FC<Props> = ({
 }) => {
   const [amount, setAmount] = React.useState(1);
   const [selectedRecipe, setSelectedRecipe] = React.useState(TOOLS[0]);
-  const [machineState, send] = useService<
+  const [machineState] = useService<
     Context,
     BlockchainEvent,
     BlockchainState
@@ -77,7 +77,7 @@ export const Tools: React.FC<Props> = ({
 
   const ingredientList = selectedRecipe.ingredients.map((ingredient) => {
     const inventoryCount =
-      ingredient.name === "$SFF" ? balance : inventory[ingredient.name];
+      ingredient.name === "Coins" ? balance : inventory[ingredient.name];
     const price = ingredient.amount * amount;
     return {
       name: ingredient.name,
@@ -88,7 +88,7 @@ export const Tools: React.FC<Props> = ({
   });
 
   const Action = () => {
-    return <span id="recipe-description">Locked</span>;
+
 
     if (isUnsaved) {
       return (
@@ -98,6 +98,7 @@ export const Tools: React.FC<Props> = ({
             <img
               //src={cancel}
               className="insufficient-funds-cross"
+              alt="Cancel"
             />
           </Message>
         </div>
@@ -151,7 +152,7 @@ export const Tools: React.FC<Props> = ({
           ))}
         </div>
         <div id="inventory-header">
-          <img src={basket} />
+          <img src={basket} alt="Basket" />
           <span>Inventory</span>
         </div>
         <div id="inventory">
@@ -160,6 +161,7 @@ export const Tools: React.FC<Props> = ({
         <a
           href="https://docs.sunflower-farmers.com/crafting-guide"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <h3 className="current-price-supply-demand">Read more</h3>
         </a>
@@ -168,7 +170,7 @@ export const Tools: React.FC<Props> = ({
         <span className={`recipe-type recipe-erc20`}>ERC20</span>
         <span id="recipe-title">{selectedRecipe.name}</span>
         <div id="crafting-item">
-          <img src={selectedRecipe.image} />
+          <img src={selectedRecipe.image} alt={selectedRecipe.name} />
         </div>
         <span id="recipe-description">{selectedRecipe.description}</span>
 
@@ -176,13 +178,12 @@ export const Tools: React.FC<Props> = ({
           {ingredientList.map((ingredient) => (
             <div className="ingredient">
               <div>
-                <img className="ingredient-image" src={ingredient.image} />
+                <img className="ingredient-image" src={ingredient.image} alt={ingredient.name} />
                 <span className="ingredient-count">{ingredient.name}</span>
               </div>
               <span
-                className={`ingredient-text ${
-                  !ingredient.canAfford && "ingredient-insufficient"
-                }`}
+                className={`ingredient-text ${!ingredient.canAfford && "ingredient-insufficient"
+                  }`}
               >
                 {ingredient.price}
               </span>

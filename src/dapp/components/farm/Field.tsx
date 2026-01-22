@@ -15,7 +15,6 @@ import radishSeedling from "../../images/radish/seedling.png";
 import parsnip from "../../images/parsnip/plant.png";
 import parsnipSeedling from "../../images/parsnip/seedling.png";
 import coin from "../../images/ui/icon.png";
-import cancel from "../../images/ui/cancel.png";
 
 import planted from "../../images/land/soil/planted.png";
 import terrain from "../../images/land/soil/soil.png";
@@ -60,7 +59,7 @@ export const Field: React.FC<Props> = ({
   balance,
   fruits,
 }) => {
-  const [_, setTimer] = React.useState<number>(0);
+  const [, setTimer] = React.useState<number>(0);
   const [harvestPrice, setHarvestPrice] = React.useState<string>(null);
   const [showPrice, setShowPrice] = React.useState(false);
   const [showInsufficientFunds, setShowInsufficientFunds] =
@@ -103,7 +102,7 @@ export const Field: React.FC<Props> = ({
     }, 700);
 
     onClick();
-  }, [balance, onClick, selectedItem, square.fruit]);
+  }, [balance, onClick, selectedItem, square.fruit, fruits]);
 
   const setHarvestTime = React.useCallback(() => {
     setTimer((count) => count + 1);
@@ -122,19 +121,19 @@ export const Field: React.FC<Props> = ({
   const Seedling = () => {
     // TODO different plant seedlings
     if (square.fruit === Fruit.Sunflower) {
-      return <img src={sunflowerSeedling} className="seedling" />;
+      return <img src={sunflowerSeedling} className="seedling" alt="" />;
     }
 
     if (square.fruit === Fruit.Potato) {
-      return <img src={potatoSeedling} className="seedling potato-seedling" />;
+      return <img src={potatoSeedling} className="seedling potato-seedling" alt="" />;
     }
 
     if (square.fruit === Fruit.Pumpkin) {
-      return <img src={pumpkinSeedling} className="seedling" />;
+      return <img src={pumpkinSeedling} className="seedling" alt="" />;
     }
 
     if (square.fruit === Fruit.Beetroot) {
-      return <img src={beetrootSeedling} className="seedling" />;
+      return <img src={beetrootSeedling} className="seedling" alt="" />;
     }
 
     if (square.fruit === Fruit.Cauliflower) {
@@ -162,31 +161,31 @@ export const Field: React.FC<Props> = ({
   const Plant = () => {
     // TODO different plant seedlings
     if (square.fruit === Fruit.Sunflower) {
-      return <img src={sunflower} className="sunflower" />;
+      return <img src={sunflower} className="sunflower" alt="" />;
     }
 
     if (square.fruit === Fruit.Potato) {
-      return <img src={potato} className="potato" />;
+      return <img src={potato} className="potato" alt="" />;
     }
 
     if (square.fruit === Fruit.Pumpkin) {
-      return <img src={pumpkin} className="pumpkin" />;
+      return <img src={pumpkin} className="pumpkin" alt="" />;
     }
 
     if (square.fruit === Fruit.Beetroot) {
-      return <img src={beetroot} className="beetroot" />;
+      return <img src={beetroot} className="beetroot" alt="" />;
     }
 
     if (square.fruit === Fruit.Cauliflower) {
-      return <img src={cauliflower} className="cauliflower" />;
+      return <img src={cauliflower} className="cauliflower" alt="" />;
     }
 
     if (square.fruit === Fruit.Parsnip) {
-      return <img src={parsnip} className="parsnip" />;
+      return <img src={parsnip} className="parsnip" alt="" />;
     }
 
     if (square.fruit === Fruit.Radish) {
-      return <img src={radish} className="radish" />;
+      return <img src={radish} className="radish" alt="" />;
     }
 
     return null;
@@ -194,19 +193,19 @@ export const Field: React.FC<Props> = ({
 
   const Progress = () => {
     if (timeLeft > totalTime * (3 / 4)) {
-      return <img src={progressStart} className="progress" />;
+      return <img src={progressStart} className="progress" alt="" />;
     }
 
     if (timeLeft > totalTime * (1 / 2)) {
-      return <img src={progressQuarter} className="progress" />;
+      return <img src={progressQuarter} className="progress" alt="" />;
     }
 
     if (timeLeft > totalTime * (1 / 4)) {
-      return <img src={progressHalf} className="progress" />;
+      return <img src={progressHalf} className="progress" alt="" />;
     }
 
     if (timeLeft > 0) {
-      return <img src={progressAlmost} className="progress" />;
+      return <img src={progressAlmost} className="progress" alt="" />;
     }
 
     return null;
@@ -222,14 +221,14 @@ export const Field: React.FC<Props> = ({
     <div className="field" onClick={!timeLeft ? click : undefined}>
       <div className="harvest" style={{ opacity: !!showPrice ? "1" : "0" }}>
         <span className="harvest-amount">{harvestPrice}</span>
-        <img className="harvest-coin" src={coin} />
+        <img className="harvest-coin" src={coin} alt="" />
       </div>
       {square.fruit === Fruit.None && (
         <>
           {!showPrice && (
-            <img className="plant-hint" src={plantingFruit.image} />
+            <img className="plant-hint" src={plantingFruit.image} alt="" />
           )}
-          <img src={terrain} className="soil" />
+          <img src={terrain} className="soil" alt="" />
         </>
       )}
       {
@@ -242,7 +241,7 @@ export const Field: React.FC<Props> = ({
       }
       {square.fruit !== Fruit.None && (
         <>
-          <img src={planted} className="planted-soil" />
+          <img src={planted} className="planted-soil" alt="" />
           {timeLeft && timeLeft > 0 && Seedling()}
           {timeLeft === 0 && Plant()}
           {Progress()}
@@ -253,12 +252,12 @@ export const Field: React.FC<Props> = ({
       )}
       <div className="field-edges">
         <div>
-          <img src={selectBoxTL} />
-          <img src={selectBoxTR} />
+          <img src={selectBoxTL} alt="" />
+          <img src={selectBoxTR} alt="" />
         </div>
         <div>
-          <img src={selectBoxBL} />
-          <img src={selectBoxBR} />
+          <img src={selectBoxBL} alt="" />
+          <img src={selectBoxBR} alt="" />
         </div>
       </div>
     </div>

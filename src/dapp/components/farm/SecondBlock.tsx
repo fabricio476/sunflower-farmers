@@ -48,7 +48,7 @@ export const SecondLand: React.FC<Props> = ({
     if (balance) {
       hasRendered.current = true;
     }
-  }, [land, balance]);
+  }, [land, balance, isUnlocked]);
 
   return (
     <>

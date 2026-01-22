@@ -29,8 +29,6 @@ export const Banner: React.FC = () => {
       const notReady =
         machineState.matches("loading") ||
         machineState.matches("initial") ||
-        machineState.matches("registering") ||
-        machineState.matches("creating") ||
         machineState.matches("onboarding");
 
       if (notReady && totalSupply < 1) setTimeout(() => load(), 100);
@@ -42,7 +40,7 @@ export const Banner: React.FC = () => {
     };
 
     load();
-  }, [machineState]);
+  }, [machineState, totalSupply]);
 
   if (!show || !totalSupply) return null;
 
@@ -61,6 +59,7 @@ export const Banner: React.FC = () => {
         <a
           href="https://docs.sunflower-farmers.com/tokenomics#the-halvening"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Read more
         </a>

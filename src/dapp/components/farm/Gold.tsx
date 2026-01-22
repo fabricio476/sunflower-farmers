@@ -138,17 +138,17 @@ export const Gold: React.FC<Props> = ({ inventory }) => {
             <img src={rock} className="rock-mine ore" alt="tree" />
             {isHighlighted && machineState.matches("mining") && (
               <div className="boundary show-overflow">
-                <img src={mining} className="miner" />
+                <img src={mining} className="miner" alt="Mining" />
                 <div className="gathered-resource-feedback">
                   <span>+</span>
-                  <img src={stone} className="wood-chopped" />
+                  <img src={stone} className="wood-chopped" alt="Stone" />
                 </div>
               </div>
             )}
             {showWaiting && (
               <div className="boundary">
-                <img src={waiting} className="miner" />
-                <img src={questionMark} className="miner-question" />
+                <img src={waiting} className="miner" alt="Waiting" />
+                <img src={questionMark} className="miner-question" alt="Question" />
               </div>
             )}
           </div>
@@ -168,6 +168,7 @@ export const Gold: React.FC<Props> = ({ inventory }) => {
               <img
                 src={closeIcon}
                 className="gather-close-icon"
+                alt="Close"
                 onClick={close}
               />
 
@@ -175,31 +176,31 @@ export const Gold: React.FC<Props> = ({ inventory }) => {
                 <div>
                   <div className="resource-material">
                     <span>Requires</span>
-                    <img src={pickaxe} />
+                    <img src={pickaxe} alt="Pickaxe" />
                   </div>
                   <div className="resource-material">
                     <span>Mines</span>
                     <div>
                       <span>1-2</span>
-                      <img src={stone} />
+                      <img src={stone} alt="Gold Ore" />
                     </div>
                   </div>
                   <div className="resource-material">
                     <span>Regrows every 12 hours</span>
                     <div>
-                      <img id="resource-timer" src={timer} />
+                      <img id="resource-timer" src={timer} alt="Timer" />
                     </div>
                   </div>
                 </div>
                 {inventory["Iron Pickaxe"] < amount ? (
                   <Message>
                     You need a{" "}
-                    <img src={pickaxe} className="required-tool" />
+                    <img src={pickaxe} className="required-tool" alt="Pickaxe" />
                   </Message>
                 ) : (
                   <div className="gather-resources">
                     <div id="craft-count">
-                      <img className="gather-axe" src={pickaxe} />
+                      <img className="gather-axe" src={pickaxe} alt="Pickaxe" />
                       <Message>{amount}</Message>
                       <div id="arrow-container">
                         {amount < limit ? (
@@ -235,13 +236,14 @@ export const Gold: React.FC<Props> = ({ inventory }) => {
               </div>
               <div className="resource-details">
                 <span className="resource-title">Gold mine</span>
-                <img src={rock} className="resource-image" />
+                <img src={rock} className="resource-image" alt="Rock" />
                 <span className="resource-description">
                   A scarce resource that can be mined for gold.
                 </span>
                 <a
                   href="https://docs.sunflower-farmers.com/resources"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <h3 className="current-price-supply-demand">
                     Read more
@@ -261,7 +263,7 @@ export const Gold: React.FC<Props> = ({ inventory }) => {
         <Panel>
           <div className="wood-toast-body">
             +{choppedCount}
-            <img className="gather-axe" src={stone} />
+            <img className="gather-axe" src={stone} alt="Gold Ore" />
           </div>
         </Panel>
       </div>

@@ -7,10 +7,11 @@ import {
 	Context,
 	BlockchainEvent,
 	BlockchainState,
-	OnboardingStates,
 } from '../../machine'
 
 import { Button } from '../ui/Button'
+
+type OnboardingStates = 'harvesting' | 'token' | 'planting' | 'saving' | 'market';
 
 const steps: ReactourStep[] = [
 	{
@@ -80,11 +81,11 @@ export const Tour: React.FC = () => {
 
 	const step =
 		STEP_MACHINE[
-			(machineState.value as any).onboarding as OnboardingStates
+		(machineState.value as any).onboarding as OnboardingStates
 		] || 0
 
 	const onFinish = () => {
-		send('CLOSE')
+		send('CANCEL')
 	}
 
 	return (

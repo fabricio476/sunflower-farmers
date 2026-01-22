@@ -7,4 +7,4 @@ export { Error } from "./Error";
 export { TimerComplete } from "./TimerComplete";
 export { Unsupported } from "./Unsupported";
 export { SaveError } from "./SaveError";
-export { GasWarning } from "./GasWarning";
+

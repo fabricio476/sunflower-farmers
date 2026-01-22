@@ -5,7 +5,7 @@ import stone from "../../images/ui/rock.png";
 
 import { FruitItem } from "../../types/fruits";
 
-import { Box, Props as BoxProps } from "./Box";
+import { Box, BoxProps } from "./Box";
 
 import {
   Inventory,

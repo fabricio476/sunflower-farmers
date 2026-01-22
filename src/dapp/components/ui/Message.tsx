@@ -20,15 +20,15 @@ export const Message: React.FC<Props> = ({
 }) => {
     return (
         <div className="message" onClick={onClick}>
-            { children }
-            <img id="panel-left-edge" src={leftEdgeInner} />
-            <img id="panel-right-edge" src={rightEdgeInner} />
-            <img id="panel-bottom-edge" src={bottomEdgeInner} />
-            <img id="panel-top-edge" src={topEdgeInner} />
-            <img id="panel-top-left" src={topLeftInner} />
-            <img id="panel-bottom-left" src={bottomLeftInner} />
-            <img id="panel-bottom-right" src={bottomRightInner} />
-            <img id="panel-top-right" src={topRightInner} />
+            {children}
+            <img id="panel-left-edge" src={leftEdgeInner} alt="" />
+            <img id="panel-right-edge" src={rightEdgeInner} alt="" />
+            <img id="panel-bottom-edge" src={bottomEdgeInner} alt="" />
+            <img id="panel-top-edge" src={topEdgeInner} alt="" />
+            <img id="panel-top-left" src={topLeftInner} alt="" />
+            <img id="panel-bottom-left" src={bottomLeftInner} alt="" />
+            <img id="panel-bottom-right" src={bottomRightInner} alt="" />
+            <img id="panel-top-right" src={topRightInner} alt="" />
         </div>
     )
 }

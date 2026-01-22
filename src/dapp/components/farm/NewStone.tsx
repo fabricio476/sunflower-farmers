@@ -273,6 +273,7 @@ export const Stones: React.FC<Props> = ({ inventory }) => {
                 <a
                   href="https://docs.sunflower-farmers.com/resources"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <h3 className="current-price-supply-demand">Read more</h3>
                 </a>

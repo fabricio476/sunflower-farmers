@@ -73,7 +73,7 @@ export const Iron: React.FC<Props> = ({ inventory }) => {
       load();
       setAmount(0);
     }
-  }, [machineState.value]);
+  }, [machineState]);
 
   useEffect(() => {
     const change = machineState.context.blockChain.getInventoryChange();
@@ -81,9 +81,10 @@ export const Iron: React.FC<Props> = ({ inventory }) => {
     if (change.Iron > 0) {
       setChoppedCount(change.Iron);
       setShowChoppedCount(true);
+      setShowChoppedCount(true);
       setTimeout(() => setShowChoppedCount(false), 3000);
     }
-  }, [machineState.value, inventory]);
+  }, [machineState, inventory]);
 
   const chop = () => {
     send("MINE", {
@@ -116,7 +117,7 @@ export const Iron: React.FC<Props> = ({ inventory }) => {
               <img
                 src={smallRock}
                 className="mined-rock gather-tree"
-                alt="tree"
+                alt="Small Rock"
               />
             </div>
           );
@@ -138,20 +139,20 @@ export const Iron: React.FC<Props> = ({ inventory }) => {
             })}
             onClick={isNextToChop ? open : undefined}
           >
-            <img src={rock} className="rock-mine" alt="tree" />
+            <img src={rock} className="rock-mine" alt="Iron Rock" />
             {isHighlighted && machineState.matches("mining") && (
               <>
-                <img src={mining} className="miner" />
+                <img src={mining} className="miner" alt="Mining" />
                 <div className="gathered-resource-feedback">
                   <span>+</span>
-                  <img src={stone} className="wood-chopped" />
+                  <img src={stone} className="wood-chopped" alt="Iron Ore" />
                 </div>
               </>
             )}
             {showWaiting && (
               <div>
-                <img src={waiting} className="miner" />
-                <img src={questionMark} className="miner-question" />
+                <img src={waiting} className="miner" alt="Waiting" />
+                <img src={questionMark} className="miner-question" alt="Question" />
               </div>
             )}
           </div>
@@ -172,36 +173,37 @@ export const Iron: React.FC<Props> = ({ inventory }) => {
                 src={closeIcon}
                 className="gather-close-icon"
                 onClick={close}
+                alt="Close"
               />
 
               <div className="resource-materials">
                 <div>
                   <div className="resource-material">
                     <span>Requires</span>
-                    <img src={pickaxe} />
+                    <img src={pickaxe} alt="Pickaxe" />
                   </div>
                   <div className="resource-material">
                     <span>Mines</span>
                     <div>
                       <span>3-5</span>
-                      <img src={stone} />
+                      <img src={stone} alt="Iron Ore" />
                     </div>
                   </div>
                   <div className="resource-material">
                     <span>Regrows every 4 hours</span>
                     <div>
-                      <img id="resource-timer" src={timer} />
+                      <img id="resource-timer" src={timer} alt="Timer" />
                     </div>
                   </div>
                 </div>
                 {inventory["Stone Pickaxe"] < amount ? (
                   <Message>
-                    You need a <img src={pickaxe} className="required-tool" />
+                    You need a <img src={pickaxe} className="required-tool" alt="Pickaxe" />
                   </Message>
                 ) : (
                   <div className="gather-resources">
                     <div id="craft-count">
-                      <img className="gather-axe" src={pickaxe} />
+                      <img className="gather-axe" src={pickaxe} alt="Pickaxe" />
                       <Message>{amount}</Message>
                       <div id="arrow-container">
                         {amount < limit ? (
@@ -237,13 +239,14 @@ export const Iron: React.FC<Props> = ({ inventory }) => {
               </div>
               <div className="resource-details">
                 <span className="resource-title">Iron</span>
-                <img src={rock} className="resource-image" />
+                <img src={rock} className="resource-image" alt="Iron Rock" />
                 <span className="resource-description">
                   A bountiful resource that can be mined for iron ore.
                 </span>
                 <a
                   href="https://docs.sunflower-farmers.com/resources"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <h3 className="current-price-supply-demand">Read more</h3>
                 </a>
@@ -261,7 +264,7 @@ export const Iron: React.FC<Props> = ({ inventory }) => {
         <Panel>
           <div className="wood-toast-body">
             +{choppedCount}
-            <img className="gather-axe" src={stone} />
+            <img className="gather-axe" src={stone} alt="Iron Ore" />
           </div>
         </Panel>
       </div>

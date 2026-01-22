@@ -1,4 +1,4 @@
-import React, {useState,useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import leftEdgeInner from '../../images/ui/panel/lt_box_9slice_lc.png'
 import rightEdgeInner from '../../images/ui/panel/lt_box_9slice_rc.png'
 import bottomEdgeInner from '../../images/ui/panel/lt_box_9slice_bc.png'
@@ -11,7 +11,7 @@ import play from '../../images/ui/audio-player/play.png'
 import pause from '../../images/ui/audio-player/pause.png'
 import next from '../../images/ui/audio-player/next.png'
 import note from '../../images/ui/audio-player/note.png'
-import {playlist} from '../../songs/playlist.ts'
+import { playlist } from '../../songs/playlist'
 import './AudioPlayer.css'
 
 export const AudioPlayer: React.FC = () => {
@@ -21,7 +21,7 @@ export const AudioPlayer: React.FC = () => {
     const [volume, setVolume] = useState<number>(0.5);
     const file = useRef(null)
 
-    const togglePlayStop = ( ) => {
+    const togglePlayStop = () => {
         if (file.current?.paused) {
             file.current.play();
             setIsPlaying(true)
@@ -32,32 +32,32 @@ export const AudioPlayer: React.FC = () => {
     }
 
     const handleNext = () => {
-        if((music + 2 ) > playlist.length){
+        if ((music + 2) > playlist.length) {
             setMusic(0)
-        }else{
+        } else {
             setMusic(music + 1)
         }
     }
 
     useEffect(() => {
-        if(file){
+        if (file) {
             file.current.volume = volume
         }
     }, [volume]);
 
     return (
         <div id="audio-player-container"
-             onMouseEnter={ () => setOnHover(true)}
-             onMouseLeave={()=> setOnHover(false)}
-             style={{
-                 left: onHover ? "8px":"-255px"
-             }}
+            onMouseEnter={() => setOnHover(true)}
+            onMouseLeave={() => setOnHover(false)}
+            style={{
+                left: onHover ? "8px" : "-255px"
+            }}
         >
             <img id="note" src={note} alt="musical note"
-                 style={{
-                     right: onHover ? "90px": "-90px",
-                     opacity:onHover ? 0 : 1
-                 }}
+                style={{
+                    right: onHover ? "90px" : "-90px",
+                    opacity: onHover ? 0 : 1
+                }}
             />
             <audio ref={file} id='audio-player' loop controls autoPlay src={playlist[music].file} />
             <img id="panel-left-edge" src={leftEdgeInner} />
@@ -74,9 +74,9 @@ export const AudioPlayer: React.FC = () => {
                 </div>
             </div>
             <div id="controls">
-                <img onClick={()=> togglePlayStop()} id="play-pause" src={isPlaying ? pause : play} alt=""/>
-                <img onClick={()=> handleNext()} id="next" src={next} alt="next song"/>
-                <input type="range" defaultValue={50} min={0} max={100} onChange={e=> setVolume(Number(e.target.value)/100)} id="volume" />
+                <img onClick={() => togglePlayStop()} id="play-pause" src={isPlaying ? pause : play} alt="" />
+                <img onClick={() => handleNext()} id="next" src={next} alt="next song" />
+                <input type="range" defaultValue={50} min={0} max={100} onChange={e => setVolume(Number(e.target.value) / 100)} id="volume" />
             </div>
 
         </div>

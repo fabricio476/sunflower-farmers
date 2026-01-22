@@ -16,8 +16,6 @@ import hammer from "../../images/ui/hammer.png";
 import basket from "../../images/ui/basket.png";
 import building from "../../images/buildings/side-house-2.png";
 
-import arrowUp from "../../images/ui/arrow_up.png";
-import arrowDown from "../../images/ui/arrow_down.png";
 import matic from "../../images/ui/matic.png";
 import discord from "../../images/ui/discord.jpeg";
 import coin from "../../images/ui/icon.png";
@@ -86,7 +84,7 @@ export const CommunityCrafting: React.FC<Props> = ({
     }, 10 * 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [machineState]);
   const changeRecipe = (recipe: Recipe) => {
     setAmount(1);
     setSelectedRecipe(recipe);
@@ -166,7 +164,7 @@ export const CommunityCrafting: React.FC<Props> = ({
         <div>
           <span className="community-title">Crowd Sourced Features</span>
           <span className="community-description">
-            80% $SFF burnt into LP
+            80% Coins burnt into LP
           </span>
           <span className="community-description">
             16% sent to the designer
@@ -190,6 +188,7 @@ export const CommunityCrafting: React.FC<Props> = ({
           <a
             href="https://docs.sunflower-farmers.com/crafting-guide#crowd-sourced-crafting"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <h3 className="current-price-supply-demand">Read more</h3>
           </a>
@@ -197,7 +196,7 @@ export const CommunityCrafting: React.FC<Props> = ({
       </div>
       <div id="recipe">
         <span className={`recipe-type recipe-nft`}>NFT</span>
-        {selectedRecipe.supply && !isNaN(amountLeft) && (
+        {selectedRecipe.supply && amountLeft !== undefined && (
           <span className="nft-count">{`${amountLeft} left!`}</span>
         )}
         <span id="recipe-title">{selectedRecipe.name}</span>
@@ -210,32 +209,24 @@ export const CommunityCrafting: React.FC<Props> = ({
           <div className="ingredient">
             <div>
               <img className="ingredient-image" src={coin} />
-              <span className="ingredient-count">$SFF</span>
+              <span className="ingredient-count">Coins</span>
             </div>
             <span
-              className={`ingredient-text ${
-                !canAfford && "ingredient-insufficient"
-              }`}
+              className={`ingredient-text ${!canAfford && "ingredient-insufficient"
+                }`}
             >
               {sunflowerTokenPrice}
             </span>
           </div>
-          <div className="ingredient">
-            <div>
-              <img className="ingredient-image" src={matic} />
-              <span className="ingredient-count">$MATIC</span>
-            </div>
-            <span className={`ingredient-text`}>
-              {maticPrice.toFixed(2)}
-            </span>
-          </div>
+          {/* MATIC Removal */}
         </div>
 
         <div id="craft-action">{Action()}</div>
         <span id="recipe-description">
-          {selectedRecipe.communityMember.twitterLink && (
+          {selectedRecipe.communityMember && selectedRecipe.communityMember.twitterLink && (
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href={selectedRecipe.communityMember.twitterLink}
               style={{ color: "white", textDecoration: "underline" }}
             >
@@ -243,7 +234,7 @@ export const CommunityCrafting: React.FC<Props> = ({
             </a>
           )}
           <div>
-            {selectedRecipe.communityMember.discordName && (
+            {selectedRecipe.communityMember && selectedRecipe.communityMember.discordName && (
               <span id="discord">
                 <img src={discord} />
                 {`@${selectedRecipe.communityMember.discordName}`}
@@ -254,6 +245,7 @@ export const CommunityCrafting: React.FC<Props> = ({
         <span id="recipe-description">
           <a
             target="_blank"
+            rel="noopener noreferrer"
             href={selectedRecipe.openSeaLink}
             style={{ color: "white", textDecoration: "underline" }}
           >
